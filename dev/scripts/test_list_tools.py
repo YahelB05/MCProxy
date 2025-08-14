@@ -67,7 +67,7 @@ tools_payload = {
   "id": 5,
   "method": "tools/call",
   "params": {
-    "name": "get_user_data"
+    "name": "get_data"
   }
 }
 send_request(tools_payload, session_id=session_id)
