@@ -1,0 +1,35 @@
+services:
+  nginx:
+    image: nginx:1.19.4
+    depends_on:
+      - api
+      - mcp-proxy
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "80:8081"
+    networks:
+      - shared
+
+  api:
+    image: mendhak/http-https-echo
+    hostname: api
+    environment:
+      - HTTP_PORT=8080
+    networks:
+      - shared
+
+  mcp-proxy:
+    image: mcp-proxy:0.1.0
+    hostname: mcp-proxy
+    depends_on:
+      - api
+    volumes:
+      - ./endpoints.json:/app/config.json
+    environment:
+      - CONFIG_FILE=/app/config.json
+    networks:
+      - shared
+
+networks:
+  shared:

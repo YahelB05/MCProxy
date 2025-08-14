@@ -1,0 +1,13 @@
+{
+  "version": "0.1.0",
+  "endpoints": [
+    {
+      "name": "get_data",
+      "description": "Gets some data",
+      "url": "http://api:8080",
+      "method": "GET",
+      "path_params": [],
+      "query_params": []
+    }
+  ]
+}
